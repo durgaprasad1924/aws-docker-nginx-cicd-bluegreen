@@ -1,0 +1,4 @@
+git pull origin main || git clone https://github.com/durgaprasad1924/aws-docker-nginx-cicd-bluegreen.git .
+
+
+
