@@ -1,11 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>DevOps Blue-Green Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Blue-Green Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Background image from Unsplash (DevOps/Tech themed) */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1667372333114-3d2b81abc460?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            max-width: 800px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        h1 {
+            color: #00d4ff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .version-badge {
+            background-color: #28a745; /* Green for "Green" deployment */
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            text-align: left;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
-  <h1>Version 2 - Deployed Via CI/CD Deployement</h1>
-  <p>Deployed using Docker & Nginx on AWS EC2</p>
+
+    <div class="container">
+        <div class="version-badge">LIVE: GREEN ENVIRONMENT</div>
+        <h1>Version 2.0.0</h1>
+        <p><strong>Deployment Status:</strong> CI/CD Pipeline Successful</p>
+
+        <div class="info-section">
+            <h3>Project Overview: Blue-Green Deployment</h3>
+            <p>This project demonstrates a zero-downtime deployment strategy. By running two identical production environments, we can switch traffic instantly between versions.</p>
+            
+            <div class="info-grid">
+                <div class="card">
+                    <strong>Infrastructure</strong><br>
+                    AWS EC2 Instance (T2.Micro)
+                </div>
+                <div class="card">
+                    <strong>Containerization</strong><br>
+                    Docker & Docker Compose
+                </div>
+                <div class="card">
+                    <strong>Web Server</strong><br>
+                    Nginx Reverse Proxy
+                </div>
+                <div class="card">
+                    <strong>Automation</strong><br>
+                    GitHub Actions / Jenkins CI/CD
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            Deployed on: <span id="date"></span>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('date').innerText = new Date().toLocaleString();
+    </script>
 </body>
 </html>
-
