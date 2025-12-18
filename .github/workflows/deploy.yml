@@ -27,8 +27,8 @@ jobs:
           cd aws-docker-nginx-cicd-bluegreen
           git pull origin main
           docker build -t bluegreen-app .
-          docker rm -f app_v1 || true
-          docker run -d --name app_v1 -p 8080:80 bluegreen-app
+          docker rm -f app_green || true
+          docker run -d --name app_green -p 8082:80 bluegreen-app
 
 
 
