@@ -1,4 +1,34 @@
-git pull origin main || git clone https://github.com/durgaprasad1924/aws-docker-nginx-cicd-bluegreen.git .
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd /opt/bluegreen || exit 1
+          if [ ! -d aws-docker-nginx-cicd-bluegreen ]; then
+            git clone https://github.com/durgaprasad1924/aws-docker-nginx-cicd-bluegreen.git
+          fi
+          cd aws-docker-nginx-cicd-bluegreen
+          git pull origin main
+          docker build -t bluegreen-app .
+          docker rm -f app_v1 || true
+          docker run -d --name app_v1 -p 8080:80 bluegreen-app
 
 
 
