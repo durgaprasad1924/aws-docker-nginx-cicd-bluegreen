@@ -10,6 +10,10 @@ using Docker, Nginx, and GitHub Actions with zero-downtime deployment.
 - Docker for application packaging
 - Nginx as reverse proxy
 - Blue-Green deployment strategy
+- Architecture diagram
+- CI/CD flow
+- Blue-Green Strategy
+- SSl automation
 
 ## Tech Stack
 AWS EC2, Docker, Nginx, GitHub Actions, Linux
